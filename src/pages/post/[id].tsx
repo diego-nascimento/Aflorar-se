@@ -51,20 +51,24 @@ const Post : React.FC<IPostPage> = ({Post, Categorias}) =>{
         <Responsable>Publicado por {Post.author}</Responsable>
         </HeaderContainer>
         <Content dangerouslySetInnerHTML={{ __html: marked(Post.text) }} />
-        <TagList>
-          <span style={{marginRight: '10px'}}>Tags:</span>
-        {Post.tags && Post.tags.map((tag: ITag) =>{
-          return(
-            <Link href={`/blog/tag/${tag.id}?tag=${tag.name}`}>
-              <a>
-                <Tag key={tag.id}> 
-                  <span>#{tag.name}</span>
-                </Tag>
-              </a>
-            </Link> 
-          )
-        })}
-      </TagList>
+        {
+          Post.tags && Post.tags.length > 0 ?
+            <TagList>
+              <span style={{marginRight: '10px'}}>Tags:</span>
+              {Post.tags && Post.tags.map((tag: ITag) =>{
+                return(
+                  <Link href={`/blog/tag/${tag.id}?tag=${tag.name}`}>
+                    <a>
+                      <Tag key={tag.id}> 
+                        <span>#{tag.name}</span>
+                      </Tag>
+                    </a>
+                  </Link> 
+                )
+              })}
+            </TagList>
+          : null
+        }
       </Wrapper>
     </LayoutBase>
     )
