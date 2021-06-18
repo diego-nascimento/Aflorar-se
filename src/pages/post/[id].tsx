@@ -18,7 +18,8 @@ interface IPostPage{
 
 const Post : React.FC<IPostPage> = ({Post, Categorias}) =>{
   return(
-    <LayoutBase>
+      Post && Categorias?
+      (<LayoutBase>
       <Wrapper className='Container'>
       <CategoriaList>
         {Categorias && Categorias.map((categoria: ICategoria) =>{
@@ -34,7 +35,7 @@ const Post : React.FC<IPostPage> = ({Post, Categorias}) =>{
         })}
       </CategoriaList>
         <ImageContainer>
-          <img src={Post.url} alt={Post.title} />
+          {Post.url && <img src={Post.url} alt={Post.title} />}
         </ImageContainer>
         <HeaderContainer>
         <Title>
@@ -59,8 +60,11 @@ const Post : React.FC<IPostPage> = ({Post, Categorias}) =>{
       </TagList>
       </Wrapper>
     </LayoutBase>
+    )
+    : null
   )
 }
+ 
 
 export default Post
 

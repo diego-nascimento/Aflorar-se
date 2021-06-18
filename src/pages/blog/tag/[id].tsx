@@ -18,12 +18,14 @@ interface IBlog{
 
 const BlogTag:React.FC<IBlog> = ({Posts, Destaques, Tag, Categorias}) =>{
   return(
+    Posts && Destaques && Tag && Categorias?
     <Layout>
       <Wrapper>
         <h1>#{Tag.name}</h1>
         <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={false} Categorias={Categorias}/>
       </Wrapper>
     </Layout>
+    : null
   )
 }
 

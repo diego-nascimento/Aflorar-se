@@ -17,14 +17,16 @@ interface IBlog{
 }
 
 const Blog:React.FC<IBlog> = ({Posts, Destaques, Categoria, Categorias}) =>{
-
   return(
+    Posts && Destaques && Categorias && Categoria
+    ?
     <Layout>
       <Wrapper>
         <h1>{Categoria.name}</h1>
         <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={false} Categorias={Categorias}/>
       </Wrapper>
     </Layout>
+    : null
   )
 }
 
