@@ -42,6 +42,13 @@ const Listing : React.FC<IListing> = ({Posts, FullOrNot, Categorias}) =>{
   return(
     <Wrapper>
       <CategoriaList>
+      <Link href={`/blog`}>
+              <a>
+                <Categoria> 
+                  <span>Inicio</span>
+                </Categoria>
+              </a>
+            </Link> 
         {Categorias && Categorias.map((categoria: ICategoria) =>{
           return(
             <Link href={`/blog/categoria/${categoria.id}?categoria=${categoria.name}`} key={categoria.id}>

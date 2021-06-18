@@ -1,10 +1,10 @@
 import React from 'react'
 import {Wrapper, ListaMenu, Item} from './MenuMobile.style'
-import {MenuContext} from '../../../Contexts/MenuContexts'
+import {useMenu} from '../../../Contexts/MenuContexts'
 import Link from 'next/link'
 
 const MenuMobile: React.FC = () =>{
-  const {MenuState, setMenuState} = React.useContext(MenuContext)
+  const {MenuState, setMenuState} = useMenu()
 
   return(
     <Wrapper MenuState={MenuState}>
