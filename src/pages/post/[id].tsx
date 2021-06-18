@@ -22,6 +22,13 @@ const Post : React.FC<IPostPage> = ({Post, Categorias}) =>{
       (<LayoutBase>
       <Wrapper className='Container'>
       <CategoriaList>
+        <Link href={`/blog`}>
+          <a>
+            <Categoria> 
+              <span>Inicio</span>
+            </Categoria>
+          </a>
+        </Link> 
         {Categorias && Categorias.map((categoria: ICategoria) =>{
           return(
             <Link href={`/blog/categoria/${categoria.id}?categoria=${categoria.name}`} key={categoria.id}>

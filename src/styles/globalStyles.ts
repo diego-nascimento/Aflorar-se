@@ -65,9 +65,6 @@ export const GlobalStyles = createGlobalStyle`
 
 
 export const CategoriaList = styled.ul`
-  display: flex;
-  flex-direction: row;
-  justify-content: flex-start;
 `;
 
 export const Categoria = styled.li`
@@ -76,6 +73,7 @@ export const Categoria = styled.li`
   margin-left: 5px;
   border-left: 1px solid #111;
   font-size: 1.2rem;
+  display: inline-block;
 
   :last-child{
     border-right: 1px solid #111;
