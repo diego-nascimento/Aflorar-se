@@ -1,21 +1,30 @@
-import React from 'react'
+import React, { useContext, useMemo } from 'react'
 
 interface IMenuContext{
   MenuState: boolean
   setMenuState: any
 }
 
-export const MenuContext = React.createContext<IMenuContext>({
+const MenuContext = React.createContext<IMenuContext>({
   MenuState: false,
   setMenuState: null
 });
 
-export const MenuStorage: React.FC = ({children}) =>{
+const MenuStorage: React.FC = ({children}) =>{
   const [MenuState, setMenuState] = React.useState<boolean>(false)
 
+  const values = useMemo(() => ({MenuState, setMenuState}), [MenuState, setMenuState])
+
   return(
-    <MenuContext.Provider value={{MenuState: MenuState, setMenuState}}>
+    <MenuContext.Provider value={values}>
       {children}
     </MenuContext.Provider>
   )
 }
+
+const useMenu = () =>{
+  const context = useContext(MenuContext)
+  return context
+}
+
+export {useMenu, MenuStorage}

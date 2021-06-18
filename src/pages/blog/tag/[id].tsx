@@ -11,7 +11,6 @@ import { ICategoria } from "../../../interfaces/ICategoria";
 interface IBlog{
   Posts: Array<IPost>
   Destaques: Array<IPost>
-  Tags: Array<ITag>
   Tag: ITag
   Categorias: Array<ICategoria>
 }

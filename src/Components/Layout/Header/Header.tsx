@@ -3,11 +3,11 @@ import {Wrapper, Container, Logo, Navegation} from './Header.style'
 import Link from 'next/link'
 import MenuMobile from '../MenuMobile/MenuMobile'
 import {FiMenu} from 'react-icons/fi'
-import {MenuContext} from '../../../Contexts/MenuContexts'
+import {useMenu} from '../../../Contexts/MenuContexts'
 
 const Header: React.FC = () =>{
 
-  const {MenuState,setMenuState} = React.useContext(MenuContext)
+  const {MenuState,setMenuState} = useMenu()
 
   return(
     <Wrapper>

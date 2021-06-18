@@ -32,7 +32,6 @@ const Blog:React.FC<IBlog> = ({Posts, Destaques, Categoria, Categorias}) =>{
 
 export default Blog
 
-
 export async function getStaticPaths() {
   const api = GetFactory()
 

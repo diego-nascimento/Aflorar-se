@@ -1,21 +1,32 @@
-import React from 'react'
+import React, { useContext, useMemo } from 'react'
 
 interface ILoadingContext{
   Loading: boolean
   setLoading: any
 }
 
-export const LoadingContext = React.createContext<ILoadingContext>({
+const LoadingContext = React.createContext<ILoadingContext>({
   Loading: false,
   setLoading: null
 })
 
-export const LoadingStorage: React.FC = ({children}) =>{
+const LoadingStorage: React.FC = ({children}) =>{
   const [Loading, setLoading] = React.useState<boolean>(false)
 
+  const values = useMemo(() => ({Loading, setLoading}) , [
+    Loading, setLoading
+  ])
+
   return(
-    <LoadingContext.Provider value={{Loading, setLoading}}>
+    <LoadingContext.Provider value={values}>
       {children}
     </LoadingContext.Provider>
   )
 }
+
+const useLoading = () =>{
+  const context = useContext(LoadingContext)
+  return context
+}
+
+export {useLoading, LoadingStorage}
