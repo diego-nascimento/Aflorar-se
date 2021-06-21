@@ -26,7 +26,8 @@ const Banners: Array<TypeBanner> = [
   },
   {
     url: '/banner3.jpg',
-    title: 'Libido LoveShop'
+    title: 'Libido LoveShop',
+    link: 'https://www.libidoss.com.br'
   },
 ]
 const  Home: React.FC<IHome> = ({Posts, Destaques, Categorias}) => {
