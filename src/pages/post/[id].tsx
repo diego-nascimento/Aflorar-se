@@ -103,8 +103,6 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 
   const date = new Date(post.published_at)
 
-  console.log(date.getUTCDay())
-
   const Post: IPost = {
     id: post.id,
     destaque: post.destaque? true: false,

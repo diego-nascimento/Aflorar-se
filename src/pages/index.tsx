@@ -24,7 +24,10 @@ const Banners: Array<TypeBanner> = [
     url: '/banner2.jpg',
     title: 'Equipe Responsavel'
   },
-
+  {
+    url: '/banner3.jpg',
+    title: 'Libido LoveShop'
+  },
 ]
 const  Home: React.FC<IHome> = ({Posts, Destaques, Categorias}) => {
   return (

@@ -10,6 +10,18 @@ export class GetData implements IGet{
     this.GetInfra = GetInfra
   }
   async handle(httpRequest: HttpRequest):Promise<HttpResponse>{
-    return await this.GetInfra.Get(httpRequest)
+    const response = await this.GetInfra.Get(httpRequest)
+    switch (response.statusCode) {
+      case 200:
+        return {
+          statusCode: 200,
+          body: response.body
+        }
+      default:
+        return {
+          statusCode: response.statusCode,
+          body: 'Algo deu errado, tente Novamente Mais tarde'
+        } 
+    }
   }
 }

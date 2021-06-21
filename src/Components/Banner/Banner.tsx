@@ -24,11 +24,11 @@ const Banner : React.FC<IBanner> = ({banners}) =>{
         touch={true}
         indicators={false}
         slide={true}
-        interval={5000}
+        interval={3000} 
       >         
         {
-          banners && banners.map(banner => {
-            return <Carousel.Item >
+          banners && banners.map((banner, index) => {
+            return <Carousel.Item  key={index}>
               <a style={{width: '100%', cursor: 'default'}}>
                <img src={banner.url} alt={banner.title} />
               </a>
