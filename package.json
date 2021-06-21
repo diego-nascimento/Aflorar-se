@@ -7,8 +7,9 @@
     "build": "next build",
     "start": "next start",
     "test": "jest --passWithNoTests",
-    "test:watch": "test -- --watch",
-    "test:coverage": "test -- --watch"
+    "test:watch": "yarn test -- --watch",
+    "test:staged": "yarn test -- --findRelatedTests",
+    "test:ci": "yarn test -- --coverage"
   },
   "dependencies": {
     "axios": "^0.21.1",
