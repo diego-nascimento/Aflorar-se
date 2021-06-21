@@ -16,6 +16,7 @@ export interface TypeBanner {
 
 
 const Banner : React.FC<IBanner> = ({banners}) =>{
+
   return(
     <Container>
       <Carousel
@@ -27,11 +28,11 @@ const Banner : React.FC<IBanner> = ({banners}) =>{
       >         
         {
           banners && banners.map(banner => {
-            <Carousel.Item >
-            <a style={{width: '100%', cursor: 'default'}}>
-              <img src={banner.url} alt={banner.title} />
-            </a>
-        </Carousel.Item>   
+            return <Carousel.Item >
+              <a style={{width: '100%', cursor: 'default'}}>
+               <img src={banner.url} alt={banner.title} />
+              </a>
+            </Carousel.Item>   
           })
         }       
            

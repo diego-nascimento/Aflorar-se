@@ -12,7 +12,7 @@ export const Container  = styled.div`
   }
 
   a img{
-    width: 100%;
+    width: 100vw;
     z-index: 1;
   }
 `;

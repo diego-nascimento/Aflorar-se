@@ -18,11 +18,11 @@ interface IHome{
 const Banners: Array<TypeBanner> = [
   {
     url: '/banner1.jpg',
-    title: 'Equipe Responsavel'
+    title: 'Aflorar-se'
   },
   {
     url: '/banner2.jpg',
-    title: 'Aflorar-se'
+    title: 'Equipe Responsavel'
   },
 
 ]
