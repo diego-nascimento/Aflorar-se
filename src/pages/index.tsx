@@ -6,6 +6,7 @@ import {GetFactory} from '../Factory/http/GetFactory'
 import { IPost } from '../interfaces/IPost'
 import {ITag} from '../interfaces/Itag'
 import { ICategoria } from '../interfaces/ICategoria'
+import {TypeBanner} from '../Components/Banner/Banner'
 
 
 interface IHome{
@@ -14,11 +15,22 @@ interface IHome{
   Categorias: Array<ICategoria>
 }
 
+const Banners: Array<TypeBanner> = [
+  {
+    url: '/banner1.jpg',
+    title: 'Equipe Responsavel'
+  },
+  {
+    url: '/banner2.jpg',
+    title: 'Aflorar-se'
+  },
+
+]
 const  Home: React.FC<IHome> = ({Posts, Destaques, Categorias}) => {
   return (
    <LayoutBase>
-     <Banner  url='/namorados_banner.png' title="Dia dos Namorados na Libido" />
-     <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={true} Categorias={Categorias}/>
+     <Banner  banners={Banners} />
+     <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={true} Categorias={Categorias} CategoriaSelected={null}/>
    </LayoutBase>
   )
 }

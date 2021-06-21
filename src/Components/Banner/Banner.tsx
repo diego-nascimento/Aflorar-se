@@ -2,12 +2,20 @@ import React from 'react'
 import { Carousel } from 'react-bootstrap';
 import {Container} from './Banner.style'
 
-interface IBanner{
+
+
+export interface TypeBanner {
   url: string
   title: string
 }
 
-const Banner : React.FC<IBanner> = ({url, title}) =>{
+ interface IBanner {
+  banners: Array<TypeBanner>
+}
+
+
+
+const Banner : React.FC<IBanner> = ({banners}) =>{
   return(
     <Container>
       <Carousel
@@ -16,12 +24,17 @@ const Banner : React.FC<IBanner> = ({url, title}) =>{
         indicators={false}
         slide={true}
         interval={5000}
-      >                
-        <Carousel.Item >
+      >         
+        {
+          banners && banners.map(banner => {
+            <Carousel.Item >
             <a style={{width: '100%', cursor: 'default'}}>
-              <img src={url} alt={title} />
+              <img src={banner.url} alt={banner.title} />
             </a>
-        </Carousel.Item>       
+        </Carousel.Item>   
+          })
+        }       
+           
     </Carousel>
   </Container>
   )

@@ -9,7 +9,7 @@ import {Responsable} from '../../Components/Blog/Listing/Listing.style'
 import { ITag } from '../../interfaces/Itag'
 import Link from 'next/link'
 import { ICategoria } from '../../interfaces/ICategoria'
-import {CategoriaList, Categoria} from '../../styles/globalStyles'
+import CategoryList from '../../Components/CategoryList/CategoryList'
 
 interface IPostPage{
   Post: IPost
@@ -17,47 +17,22 @@ interface IPostPage{
 }
 
 const Post : React.FC<IPostPage> = ({Post, Categorias}) =>{
+
   return(
       Post && Categorias?
       (<LayoutBase>
       <Wrapper className='Container'>
-      <CategoriaList>
-        <Link href={`/blog`}>
-          <a>
-            <Categoria> 
-              <span>Inicio</span>
-            </Categoria>
-          </a>
-        </Link> 
-        {Categorias && Categorias.map((categoria: ICategoria) =>{
-          return(
-            <Link href={`/blog/categoria/${categoria.id}?categoria=${categoria.name}`} key={categoria.id}>
-              <a>
-                <Categoria> 
-                  <span>{categoria.name}</span>
-                </Categoria>
-              </a>
-            </Link> 
-          )
-        })}
-      </CategoriaList>
+        <CategoryList CategoriaSelected={null} Categorias={Categorias}/>
         <ImageContainer>
           {Post.url && <img src={Post.url} alt={Post.title} />}
         </ImageContainer>
-        <HeaderContainer>
-        <Title>
-          {Post.title}
-        </Title>
-        <Responsable>Publicado por {Post.author}</Responsable>
-        </HeaderContainer>
-        <Content dangerouslySetInnerHTML={{ __html: marked(Post.text) }} />
         {
           Post.tags && Post.tags.length > 0 ?
             <TagList>
               <span style={{marginRight: '10px'}}>Tags:</span>
               {Post.tags && Post.tags.map((tag: ITag) =>{
                 return(
-                  <Link href={`/blog/tag/${tag.id}?tag=${tag.name}`}>
+                  <Link href={`/blog/tag/${tag.id}?tag=${tag.name}`} key={tag.id}>
                     <a>
                       <Tag key={tag.id}> 
                         <span>#{tag.name}</span>
@@ -66,9 +41,19 @@ const Post : React.FC<IPostPage> = ({Post, Categorias}) =>{
                   </Link> 
                 )
               })}
+              <Tag style={{marginLeft: '10px', background: 'none'}}>Publicado em: {Post.published_at} </Tag>
             </TagList>
           : null
         }
+        
+        <HeaderContainer>
+        <Title>
+          {Post.title}
+        </Title>
+        <Responsable>Publicado por {Post.author}</Responsable>
+        </HeaderContainer>
+        <Content dangerouslySetInnerHTML={{ __html: marked(Post.text) }} />
+        
       </Wrapper>
     </LayoutBase>
     )
@@ -116,6 +101,10 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
 
   const post = responsePosts.body
 
+  const date = new Date(post.published_at)
+
+  console.log(date.getUTCDay())
+
   const Post: IPost = {
     id: post.id,
     destaque: post.destaque? true: false,
@@ -123,7 +112,8 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
     title: post.title,
     url: post.image[0].url || undefined,
     author: `${post.admin_user.firstname} ${post.admin_user.lastname}`,
-    tags: post.tags
+    tags: post.tags,
+    published_at: `${date.getDay()}/${date.getUTCMonth()}/${date.getFullYear()} `
   }
 
   const Categorias = ResponseCategorias.body.map((categoria: ICategoria):ICategoria =>{

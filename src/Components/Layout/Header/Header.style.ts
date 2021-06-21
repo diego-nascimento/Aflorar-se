@@ -49,6 +49,7 @@ export const Logo = styled.div`
   display: flex;
 `;
 
+
 export const Navegation = styled.nav`
   display: flex;
   justify-content: space-around;

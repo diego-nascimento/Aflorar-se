@@ -23,7 +23,7 @@ const Blog:React.FC<IBlog> = ({Posts, Destaques, Categoria, Categorias}) =>{
     <Layout>
       <Wrapper>
         <h1>{Categoria.name}</h1>
-        <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={false} Categorias={Categorias}/>
+        <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={false} Categorias={Categorias} CategoriaSelected={Categoria}/>
       </Wrapper>
     </Layout>
     : null

@@ -63,23 +63,3 @@ export const GlobalStyles = createGlobalStyle`
   }
 `;
 
-
-export const CategoriaList = styled.ul`
-`;
-
-export const Categoria = styled.li`
-  padding: 2px 20px;
-  transition: .3s;
-  margin-left: 5px;
-  border-left: 1px solid #111;
-  font-size: 1.2rem;
-  display: inline-block;
-
-  :last-child{
-    border-right: 1px solid #111;
-  }
-  
-  :hover{
-    background: #eee;
-  }
-`;

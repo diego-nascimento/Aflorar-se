@@ -27,7 +27,7 @@ export const ImageContainer = styled.div`
 export const HeaderContainer = styled.div`
   border-left: 3px solid red;
   padding-left: 10px;
-  margin-top: 50px;
+  margin-top: 30px;
 `;
 
 export const Title = styled.h1`
@@ -52,7 +52,7 @@ export const TagList = styled.ul`
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
-  margin-top: 30px;
+  margin-top: 20px;
 `;
 
 export const Tag = styled.li`

@@ -2,21 +2,22 @@ import React from 'react'
 import Link from 'next/link'
 import {Wrapper, PostList, Post, ImageContainer, Title, TextContainer, TextResumed, Responsable} from './Listing.style'
 import marked from 'marked'
-import {CategoriaList, Categoria } from '../../../styles/globalStyles'
-
-
 import { IPost } from '../../../interfaces/IPost'
-import { ITag } from '../../../interfaces/Itag'
 import { ICategoria } from '../../../interfaces/ICategoria'
+import {useRouter} from 'next/router'
+import CategoryList from '../../CategoryList/CategoryList'
 
 
 interface IListing{
   Posts: Array<IPost>
   FullOrNot: boolean
   Categorias: Array<ICategoria>
+  CategoriaSelected: ICategoria | null
 }
 
-const Listing : React.FC<IListing> = ({Posts, FullOrNot, Categorias}) =>{
+
+const Listing : React.FC<IListing> = ({Posts, FullOrNot, Categorias, CategoriaSelected}) =>{
+  const Router = useRouter()
 
   const RenderPost = (PostData:IPost) =>{
     return (
@@ -41,26 +42,7 @@ const Listing : React.FC<IListing> = ({Posts, FullOrNot, Categorias}) =>{
   
   return(
     <Wrapper>
-      <CategoriaList>
-        <Link href={`/blog`}>
-          <a>
-            <Categoria> 
-              <span>Inicio</span>
-            </Categoria>
-          </a>
-        </Link> 
-        {Categorias && Categorias.map((categoria: ICategoria) =>{
-          return(
-            <Link href={`/blog/categoria/${categoria.id}?categoria=${categoria.name}`} key={categoria.id}>
-              <a>
-                <Categoria> 
-                  <span>{categoria.name}</span>
-                </Categoria>
-              </a>
-            </Link> 
-          )
-        })}
-      </CategoriaList>
+      <CategoryList Categorias={Categorias} CategoriaSelected={CategoriaSelected}/>
       <PostList>
         {Posts && Posts.map( (PostData:IPost, index: number) =>{
            if(FullOrNot){

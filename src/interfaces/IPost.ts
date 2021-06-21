@@ -8,4 +8,5 @@ export interface IPost{
   destaque: boolean,
   author: string
   tags?: Array<ITag>
+  published_at?: string
 }
