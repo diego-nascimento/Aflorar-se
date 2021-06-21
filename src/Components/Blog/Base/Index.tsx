@@ -10,7 +10,7 @@ interface IBlogBase {
   DestaquesData: Array<IPost>
   FullOrNot: boolean
   Categorias: Array<ICategoria>
-  CategoriaSelected: ICategoria | null
+  CategoriaSelected?: ICategoria | null
 }
 
 const BlogBase: React.FC<IBlogBase> = ({DestaquesData, Posts, FullOrNot, Categorias, CategoriaSelected}) =>{
