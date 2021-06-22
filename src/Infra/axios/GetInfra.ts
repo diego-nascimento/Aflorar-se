@@ -1,19 +1,23 @@
+
 import { IGetInfra, IGetEntry } from '../../Data/Protocols/IGetInfra ';
+import axios from 'axios'
 import { HttpResponse } from '../../Domain/Protocols/httpHelpers';
-import { api } from './AxiosApi'
+
 
 export class GetInfra implements IGetInfra{
-  async Get({ body, url }: IGetEntry): Promise<HttpResponse>{
+  async Get(httpRequest: IGetEntry):Promise<HttpResponse>{
+    const url = process.env.APIURL + httpRequest.url
     try {
-      const response = await api.get(url, body)
-      return {
-        statusCode: response.status, 
+      const response = await axios.get(url, httpRequest.body)
+      const data:HttpResponse = {
+        statusCode: response.status,
         body: response.data
-      }
+      } 
+      return data
     } catch (error) {
       return {
         statusCode: 500,
-        body: null
+        body: 'Algo deu errado. Tente novamente mais tarde!'
       }
     }
   }
