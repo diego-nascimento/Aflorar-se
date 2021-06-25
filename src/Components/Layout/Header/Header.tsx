@@ -26,6 +26,11 @@ const Header: React.FC = () =>{
               Loja
             </a>
           </Link>
+          <Link href='/sobre' >
+            <a>
+              Sobre nós
+            </a>
+          </Link>
           <Link href="/blog" >
             <a>
               Blog

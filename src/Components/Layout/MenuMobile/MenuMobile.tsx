@@ -6,6 +6,16 @@ import Link from 'next/link'
 const MenuMobile: React.FC = () =>{
   const {MenuState, setMenuState} = useMenu()
 
+  const checkResize = () =>{
+    window.addEventListener('resize', () =>{
+      setMenuState(false)
+    })
+  }
+
+  React.useEffect(() =>{
+    checkResize()
+  })
+
   return(
     <Wrapper MenuState={MenuState}>
       <ListaMenu>
@@ -13,6 +23,13 @@ const MenuMobile: React.FC = () =>{
           <Link href="http://www.libidoss.com.br">
             <a target='blank'>
               Loja
+            </a>
+          </Link>
+        </Item>
+        <Item onClick={ () => setMenuState(false)}>
+          <Link href="/sobre">
+            <a>
+              Sobre nós
             </a>
           </Link>
         </Item>

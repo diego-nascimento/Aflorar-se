@@ -31,7 +31,7 @@ export const Container = styled.div<IContainer>`
 
     @media(max-width: 800px){
       display: flex;  
-      
+      position: ${props => props.MenuState === true ? 'fixed': 'block'};
       color: ${props => props.MenuState === true ? 'black': 'white'}
     }
   }
@@ -41,8 +41,7 @@ export const Container = styled.div<IContainer>`
   }
 `;
 
-export const Logo = styled.div`
-  font-size: 2rem;
+export const Logo = styled.h2`
   letter-spacing: .3rem;
   text-transform: uppercase;
   font-weight: bold;

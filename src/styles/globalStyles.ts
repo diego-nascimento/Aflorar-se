@@ -47,7 +47,7 @@ export const GlobalStyles = createGlobalStyle`
       max-width: 900px;
     }
 
-    @media(max-width: 100px){
+    @media(max-width: 1000px){
       max-width: 750px;
     }
   }
@@ -59,6 +59,25 @@ export const GlobalStyles = createGlobalStyle`
 
     h2{
      font-size: 1.3rem;
+    }
+
+    p{
+      font-size: .9rem;
+    }
+  }
+
+  @media(max-width: 400px){
+    h1{
+      font-size: 1.5rem;
+    }
+
+    h2{
+     font-size: 1rem;
+    }
+
+    p{
+      font-size: .6rem;
+      line-height: .9rem;
     }
   }
 `;
