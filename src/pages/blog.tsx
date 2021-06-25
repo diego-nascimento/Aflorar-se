@@ -30,23 +30,23 @@ export default Blog
 export const getStaticProps: GetStaticProps = async (context) => {
   const Get = GetFactory()
   const responsePosts = await Get.handle({
-    url: '/posts',
+    url: `${process.env.APIURL}/posts`,
     body: null
   })
 
   const ResponseDestaques = await Get.handle({
-    url: '/posts?destaque=true',
+    url: `${process.env.APIURL}/posts?destaque=true`,
     body: null
   })
 
   const ResponseTags = await Get.handle({
-    url: '/tags',
+    url: `${process.env.APIURL}/tags`,
     body: null
   })
 
   
   const ResponseCategorias = await Get.handle({
-    url: '/categoria-blogs',
+    url: `${process.env.APIURL}/categoria-blogs`,
     body: null
   })
 

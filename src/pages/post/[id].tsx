@@ -90,14 +90,18 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({params}: any) => {
   const Get = GetFactory()
   const responsePosts = await Get.handle({
-    url: `/posts/${params.id}`,
+    url: `${process.env.APIURL}/posts/${params.id}`,
     body: null
   })
 
+
+
   const ResponseCategorias = await Get.handle({
-    url: '/categoria-blogs',
+    url: `${process.env.APIURL}/categoria-blogs`,
     body: null
   })
+
+
 
   const post = responsePosts.body
 

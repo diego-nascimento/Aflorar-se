@@ -21,6 +21,13 @@ const makeRequest = ():IGetEntry =>{
 
 describe('Get-Infra', ()=>{
 
+  test('Should call axios with correct params', async () =>{
+    const sut = makeSut()
+    const params = makeRequest()
+    await sut.Get(params)
+    expect(mockedAxios.get).toHaveBeenCalledWith(params.url, params.body)
+  })
+
   test('Should return the correct statusCode and body', async () =>{
     const sut = makeSut()
      const request = makeRequest()

@@ -52,13 +52,13 @@ describe('Get-Data', ()=>{
     expect(response).toEqual({statusCode: 404, body: 'Algo deu errado, tente Novamente Mais tarde'})
   })
 
-  test('Should return statusCode 200 if httpGetter return 200', async ()=>{
+  test('Should return statusCode 200 and body if httpGetter return 200', async ()=>{
     const {sut, httpGetterMocked} = makeSut()
     const params:HttpRequest ={
-      body: null,
+      body: faker.random.objectElement(),
       url: faker.internet.url()
     }
-    const responseMocked = {statusCode: 200, body: params}
+    const responseMocked = {statusCode: 200, body: params.body}
     jest.spyOn(httpGetterMocked, 'Get').mockReturnValueOnce(Promise.resolve(responseMocked))
     const response = await sut.handle(params)
     expect(response).toEqual(responseMocked)

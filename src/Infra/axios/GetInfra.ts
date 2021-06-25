@@ -6,7 +6,7 @@ import { HttpResponse } from '../../Domain/Protocols/httpHelpers';
 
 export class GetInfra implements IGetInfra{
   async Get(httpRequest: IGetEntry):Promise<HttpResponse>{
-    const url = process.env.APIURL + httpRequest.url
+    const url = httpRequest.url
     try {
       const response = await axios.get(url, httpRequest.body)
       const data:HttpResponse = {

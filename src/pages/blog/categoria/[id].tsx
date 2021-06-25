@@ -57,22 +57,27 @@ export async function getStaticPaths() {
 export const getStaticProps: GetStaticProps = async ({params}:any) => {
   const Get = GetFactory()
   const responsePosts = await Get.handle({
-    url: `/posts?categoria_blog.id=${params.id}`,
+    url: `${process.env.APIURL}/posts?categoria_blog.id=${params.id}`,
     body: null
   })
 
   const ResponseDestaques = await Get.handle({
-    url: '/posts?destaque=true',
+    url: `${process.env.APIURL}/posts?destaque=true`,
     body: null
   })
 
   const ResponseTags = await Get.handle({
-    url: '/tags',
+    url: `${process.env.APIURL}/tags`,
     body: null
   })
 
   const ResponseActualCategoria = await Get.handle({
-    url: `/categoria-blogs/${params.id}`,
+    url: `${process.env.APIURL}/categoria-blogs/${params.id}`,
+    body: null
+  })
+
+  const ResponseCategorias = await Get.handle({
+    url: `${process.env.APIURL}/categoria-blogs`,
     body: null
   })
 
@@ -105,10 +110,7 @@ export const getStaticProps: GetStaticProps = async ({params}:any) => {
     }
   })
 
-  const ResponseCategorias = await Get.handle({
-    url: '/categoria-blogs',
-    body: null
-  })
+ 
 
 
   const ActualCategoria:ICategoria = {
