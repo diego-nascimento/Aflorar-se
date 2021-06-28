@@ -1,7 +1,7 @@
 import React from 'react'
 import LayoutBase from '../Components/Layout/base/Base'
 import {Wrapper,ListMembers, Member, Photo, Description, SocialMedia} from '../PageStyles/Sobre.style'
-import {ImFacebook, } from 'react-icons/Im'
+import {ImFacebook, } from 'react-icons/im'
 import {AiOutlineInstagram, AiOutlineWhatsApp} from 'react-icons/ai'
 import {FaTwitter} from 'react-icons/fa'
 import { IMember } from '../interfaces/IMember'
