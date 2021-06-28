@@ -51,7 +51,7 @@ const Sobre: React.FC<ISobre> = ({data}) =>{
                     }
                     {membro.twitter &&  
                     <Link href={membro.twitter}>
-                      <a ><AiOutlineWhatsApp /></a>
+                      <a ><FaTwitter /></a>
                     </Link> }                                 
                   </SocialMedia>
                 </Description>
