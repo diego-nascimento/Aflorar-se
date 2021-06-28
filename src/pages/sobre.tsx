@@ -21,8 +21,6 @@ interface ISobre{
 
 
 const Sobre: React.FC<ISobre> = ({data}) =>{
-  console.log(data)
-
   return(
     <LayoutBase >
       <h1>Sobre a Equipe</h1>
