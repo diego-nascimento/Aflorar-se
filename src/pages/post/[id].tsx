@@ -10,6 +10,7 @@ import { ITag } from '../../interfaces/Itag'
 import Link from 'next/link'
 import { ICategoria } from '../../interfaces/ICategoria'
 import CategoryList from '../../Components/CategoryList/CategoryList'
+import { getMonth } from '../../util/getMonth'
 
 interface IPostPage{
   Post: IPost
@@ -41,11 +42,9 @@ const Post : React.FC<IPostPage> = ({Post, Categorias}) =>{
                   </Link> 
                 )
               })}
-              <Tag style={{marginLeft: '10px', background: 'none'}}>Publicado em: {Post.published_at} </Tag>
             </TagList>
           : null
         }
-        
         <HeaderContainer>
         <Title>
           {Post.title}
@@ -101,11 +100,8 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
     body: null
   })
 
-
-
   const post = responsePosts.body
-
-  const date = new Date(post.published_at)
+  const PublishedDate = new Date(post.published_at? post.published_at : '15:22')
 
   const Post: IPost = {
     id: post.id,
@@ -115,7 +111,7 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
     url: post.image[0].url || undefined,
     author: `${post.admin_user.firstname} ${post.admin_user.lastname}`,
     tags: post.tags,
-    published_at: `${date.getDay()}/${date.getUTCMonth()}/${date.getFullYear()} `
+    published_at: `${PublishedDate.getUTCDate()} de ${getMonth(PublishedDate.getMonth())} de ${PublishedDate.getFullYear()}`
   }
 
   const Categorias = ResponseCategorias.body.map((categoria: ICategoria):ICategoria =>{

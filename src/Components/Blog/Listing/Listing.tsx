@@ -4,8 +4,9 @@ import {Wrapper, PostList, Post, ImageContainer, Title, TextContainer, TextResum
 import marked from 'marked'
 import { IPost } from '../../../interfaces/IPost'
 import { ICategoria } from '../../../interfaces/ICategoria'
-import {useRouter} from 'next/router'
 import CategoryList from '../../CategoryList/CategoryList'
+import MobileListCategoria from './MobileListCategoria'
+
 
 
 interface IListing{
@@ -17,7 +18,6 @@ interface IListing{
 
 
 const Listing : React.FC<IListing> = ({Posts, FullOrNot, Categorias, CategoriaSelected}) =>{
-  const Router = useRouter()
 
   const RenderPost = (PostData:IPost) =>{
     return (
@@ -42,6 +42,7 @@ const Listing : React.FC<IListing> = ({Posts, FullOrNot, Categorias, CategoriaSe
   
   return(
     <Wrapper>
+      <MobileListCategoria categorias={Categorias}/>
       <CategoryList Categorias={Categorias} CategoriaSelected={CategoriaSelected}/>
       <PostList>
         {Posts && Posts.map( (PostData:IPost, index: number) =>{

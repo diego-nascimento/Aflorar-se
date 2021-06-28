@@ -18,4 +18,8 @@ export const Categoria = styled.li<ICategoriaStyle>`
   :hover{
     text-decoration: ${({active}) => active? 'none': 'underline' };
   }
+
+  @media(max-width: 800px){
+    display: none;
+  }
 `;
