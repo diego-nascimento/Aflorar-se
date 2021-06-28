@@ -38,20 +38,20 @@ const Sobre: React.FC<ISobre> = ({data}) =>{
                   <SocialMedia>
                     {membro.facebook && 
                     <Link href={membro.facebook}>
-                      <a ><ImFacebook /></a>
+                      <a target='blank'><ImFacebook /></a>
                     </Link>}
                     {membro.instagram && 
                     <Link href={membro.instagram}>
-                      <a ><AiOutlineInstagram /></a>
+                      <a target='blank'><AiOutlineInstagram /></a>
                     </Link>}
                     {membro.whatsapp &&
                     <Link href={membro.whatsapp}>
-                      <a ><AiOutlineWhatsApp /></a>
+                      <a target='blank'><AiOutlineWhatsApp /></a>
                     </Link>
                     }
                     {membro.twitter &&  
                     <Link href={membro.twitter}>
-                      <a ><FaTwitter /></a>
+                      <a target='blank'><FaTwitter /></a>
                     </Link> }                                 
                   </SocialMedia>
                 </Description>
