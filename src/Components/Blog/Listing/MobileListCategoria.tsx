@@ -16,7 +16,7 @@ const MobileListCategoria:React.FC<IMobileListCategoria> = ({categorias}) =>{
 
   return (
     <ContainerMobile onClick={() => setActivated(!activated)} active={activated}>
-      <p>{categoriaSelected.name}</p>
+      <p>Selecione a categoria aqui</p>
       <AiOutlineArrowUp />
       <CategoriaOptions active={activated}>
         <CategoriaOption key={0} onClick={() => {

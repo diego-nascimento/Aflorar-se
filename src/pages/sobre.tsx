@@ -1,36 +1,82 @@
 import React from 'react'
 import LayoutBase from '../Components/Layout/base/Base'
-import {Wrapper,ListMembers, Member, Photo, Description} from '../PageStyles/Sobre.style'
-const Sobre: React.FC = () =>{
+import {Wrapper,ListMembers, Member, Photo, Description, SocialMedia} from '../PageStyles/Sobre.style'
+import {ImFacebook, } from 'react-icons/Im'
+import {AiOutlineInstagram, AiOutlineWhatsApp} from 'react-icons/ai'
+import {FaTwitter} from 'react-icons/fa'
+import { IMember } from '../interfaces/IMember'
+import { GetFactory } from '../Factory/http/GetFactory'
+import { GetStaticProps } from 'next'
+import Link from 'next/link'
+
+interface IData{
+  id: string,
+  membros: Array<IMember>
+}
+
+
+interface ISobre{
+  data: IData
+}
+
+
+const Sobre: React.FC<ISobre> = ({data}) =>{
+  console.log(data)
+
   return(
     <LayoutBase >
       <h1>Sobre a Equipe</h1>
       <Wrapper className='Container'>
         <ListMembers>
-          <Member>
-            <Photo className='Photo'>
-              <img src="http://www.moreno.pe.gov.br/portal2/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png" alt="iamgem aqui" />
-            </Photo>
-            <Description className='Description'>
-              <h2>Nome do Candango</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </Description>
-          </Member>
-
-          <Member>
-            <Photo className='Photo'>
-              <img src="http://www.moreno.pe.gov.br/portal2/images/phocagallery/galeria2/thumbs/phoca_thumb_l_image03_grd.png" alt="iamgem aqui" />
-            </Photo>
-            <Description className='Description'>
-              <h2>Nome do Candango</h2>
-              <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
-            </Description>
-          </Member>
+          {data.membros && data.membros.map((membro:IMember) =>{
+            return(
+              <Member key={membro.id}>
+                <Photo className='Photo'>
+                  <img src={membro.photo.url} alt={membro.name} />
+                </Photo>
+                <Description className='Description'>
+                  <h2>{membro.name}</h2>
+                  <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</p>
+                  <SocialMedia>
+                    {membro.facebook && 
+                    <Link href={membro.facebook}>
+                      <a ><ImFacebook /></a>
+                    </Link>}
+                    {membro.instagram && 
+                    <Link href={membro.instagram}>
+                      <a ><AiOutlineInstagram /></a>
+                    </Link>}
+                    {membro.whatsapp &&
+                    <Link href={membro.whatsapp}>
+                      <a ><AiOutlineWhatsApp /></a>
+                    </Link>
+                    }
+                    {membro.twitter &&  
+                    <Link href={membro.twitter}>
+                      <a ><AiOutlineWhatsApp /></a>
+                    </Link> }                                 
+                  </SocialMedia>
+                </Description>
+              </Member>
+            )
+          })}
         </ListMembers>
       </Wrapper>
-      
     </LayoutBase>
   )
 }
 
 export default Sobre
+
+export const getStaticProps: GetStaticProps = async (context) => {
+  const Get = GetFactory()
+  const response = await Get.handle({url: `${process.env.APIURL}/aflorar-se-sobre`, body: null})
+  return{
+    props:{
+      data:{
+        id: response.body.id,
+        membros: response.body.membros
+      }
+    }
+  }
+}

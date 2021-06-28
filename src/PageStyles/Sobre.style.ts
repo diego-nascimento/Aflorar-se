@@ -38,24 +38,27 @@ export const Photo = styled.div`
 
   img{
     width: 100%;
+    border-radius: 5px;
   }
 
   @media(max-width: 800px){
     img{
       width: 200px;
       height: 200px;
-      border-radius: 50%;
+      border-radius: 100%;
+      object-fit: cover;
+      object-position: top;
     }
-
   }
 
-  @media(max-width: 800px){
+  @media(max-width: 400px){
     img{
       width: 150px;
       height: 150px;
-      border-radius: 50%;
+      border-radius: 100%;
+      object-fit: cover;
+      object-position: top;
     }
-
   }
 `;
 
@@ -64,10 +67,19 @@ export const Description = styled.div`
   justify-content: flex-start;
   text-align: left;
   flex-direction: column;
-  border-top: .1rem solid #ccc;
-  padding-top: 20px;
+  border-bottom: .1rem solid #ccc;
 
   @media(max-width: 800px){
     margin: 10px 10px;
+  }
+`;
+
+export const SocialMedia = styled.section`
+  justify-self: flex-end;
+
+  svg{
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px;
   }
 `;

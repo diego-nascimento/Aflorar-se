@@ -1,10 +1,12 @@
 import React from 'react'
-import {Wrapper} from '../Footer/Footer.style'
+import {Wrapper, Container} from '../Footer/Footer.style'
 
 const Footer : React.FC = () =>{
   return(
-    <Wrapper>
-      Footer
+    <Wrapper >
+      <Container className='Container'>
+        <b>Aflorar-se - Todos os direitos reservados</b>
+      </Container>
     </Wrapper>  
   )
 }
