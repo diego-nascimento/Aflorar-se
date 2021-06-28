@@ -1,5 +1,5 @@
 import React from 'react'
-import {Wrapper, ListaMenu, Item} from './MenuMobile.style'
+import {Wrapper, Background, ListaMenu, Item} from './MenuMobile.style'
 import {useMenu} from '../../../Contexts/MenuContexts'
 import Link from 'next/link'
 
@@ -17,8 +17,17 @@ const MenuMobile: React.FC = () =>{
   })
 
   return(
+    <>
+    <Background MenuState={MenuState} onClick={() => setMenuState(false)}/>
     <Wrapper MenuState={MenuState}>
       <ListaMenu>
+      <Item onClick={ () => setMenuState(false)}>
+          <Link href="/">
+            <a>
+              Inicio
+            </a>
+          </Link>
+        </Item>
         <Item onClick={ () => setMenuState(false)}>
           <Link href="http://www.libidoss.com.br">
             <a target='blank'>
@@ -49,6 +58,7 @@ const MenuMobile: React.FC = () =>{
         </Item>
       </ListaMenu>
     </Wrapper>
+   </> 
   )
 }
 

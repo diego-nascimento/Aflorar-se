@@ -22,6 +22,17 @@ export const Wrapper = styled.nav<IWrapper>`
     display: flex;
   }
 `;
+
+export const Background = styled.div<IWrapper>`
+  z-index: 50;
+  width: 100vw;
+  height: 100vh;
+  display: ${props => props.MenuState? 'block': 'none'};
+  background-color: rgba(0,0,0, .5);
+  position: fixed;
+  top: 0px;
+  left: 0px;
+`;
 export const ListaMenu = styled.ul`
   width: 100%;
   display: flex;
