@@ -27,6 +27,7 @@ export const Member = styled.li`
 
   @media(max-width: 800px){
     grid-template-columns: 1fr;
+    padding: 0px 10px;
   }
 `;
 
