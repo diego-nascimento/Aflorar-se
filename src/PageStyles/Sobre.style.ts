@@ -1,7 +1,12 @@
 
 import styled from 'styled-components'
 
-export const Wrapper = styled.section``;
+export const WrapperProjeto = styled.section`
+  display: flex;
+  justify-content: center;
+`;
+
+export const WrapperMembers = styled.section``;
 
 export const ListMembers = styled.ul`
   display:flex;
@@ -65,13 +70,19 @@ export const Photo = styled.div`
 
 export const Description = styled.div`
   display: flex;
-  justify-content: flex-start;
   text-align: left;
   flex-direction: column;
   border-bottom: .1rem solid #ccc;
 
   @media(max-width: 800px){
     margin: 10px 10px;
+  }
+`;
+
+export const Content = styled.div`
+  h2{
+    font-size: 1.1rem;
+    text-align: left;
   }
 `;
 
