@@ -1,6 +1,6 @@
 import React from 'react'
 import LayoutBase from '../Components/Layout/base/Base'
-import {WrapperProjeto, WrapperMembers,ListMembers, Member, Photo, Description,Content, SocialMedia} from '../PageStyles/Sobre.style'
+import {WrapperProjeto, LogoContainer, WrapperMembers,ListMembers, Member, Photo, Description,Content, SocialMedia} from '../PageStyles/Sobre.style'
 import {ImFacebook, } from 'react-icons/im'
 import {AiOutlineInstagram, AiOutlineWhatsApp} from 'react-icons/ai'
 import {FaTwitter} from 'react-icons/fa'
@@ -12,20 +12,23 @@ import marked from 'marked'
 
 interface IData{
   id: string,
-  membros: Array<IMember>
+  membros: Array<IMember>,
+  descricao_projeto: string
 }
-
 
 interface ISobre{
   data: IData
 }
 
-
 const Sobre: React.FC<ISobre> = ({data}) =>{
   return(
     <LayoutBase >
       <WrapperProjeto className="Container">
-        <h1>Projeto Aflorar-se</h1>
+        <h1>Nosso Projeto</h1>
+        <LogoContainer>
+          <img src="/banner1.jpg" alt="Banner" />
+        </LogoContainer>
+        <Content dangerouslySetInnerHTML={{ __html: marked(data.descricao_projeto) }} />
       </WrapperProjeto>
       <WrapperMembers className='Container'>
         <h1>Sobre a Equipe</h1>
@@ -77,7 +80,8 @@ export const getStaticProps: GetStaticProps = async (context) => {
     props:{
       data:{
         id: response.body.id,
-        membros: response.body.membros
+        membros: response.body.membros,
+        descricao_projeto: response.body.descricao_projeto
       }
     }
   }

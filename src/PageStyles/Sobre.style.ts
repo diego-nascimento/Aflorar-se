@@ -3,16 +3,37 @@ import styled from 'styled-components'
 
 export const WrapperProjeto = styled.section`
   display: flex;
-  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+
+  h1{
+    padding: 0px 20px;
+  }
 `;
 
-export const WrapperMembers = styled.section``;
+export const LogoContainer = styled.div`
+  width: 100vw;
+
+  img{
+    width: 100%;
+  }
+`;
+
+export const WrapperMembers = styled.section`
+  width: 100vw;
+
+  h1{
+    padding: 0px 20px;
+  }
+`;
 
 export const ListMembers = styled.ul`
   display:flex;
   flex-direction: column;
-  width: 100%;
+  width: 100vw;
   margin-top: 50px;
+
 `;
 
 export const Member = styled.li`
@@ -74,12 +95,21 @@ export const Description = styled.div`
   flex-direction: column;
   border-bottom: .1rem solid #ccc;
 
-  @media(max-width: 800px){
-    margin: 10px 10px;
-  }
 `;
 
 export const Content = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-top: 20px;
+  padding: 0px 20px;
+
+  img{
+    max-height: 500px;
+    border-radius: 5px;
+  }
   h2{
     font-size: 1.1rem;
     text-align: left;
