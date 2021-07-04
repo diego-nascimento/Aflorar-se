@@ -11,6 +11,12 @@
     "test:staged": "yarn test -- --findRelatedTests",
     "test:ci": "yarn test -- --coverage"
   },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "pre-push": "yarn test:ci"
+    }
+  },
   "dependencies": {
     "@types/axios-mock-adapter": "^1.10.0",
     "@types/faker": "^5.5.6",
