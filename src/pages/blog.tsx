@@ -1,12 +1,11 @@
-import React from "react";
+import React from 'react'
 import Layout from '../Components/Layout/base/Base'
 import BlogBase from '../Components/Blog/Base/Index'
-import {Wrapper} from '../PageStyles/Blog.style'
-import { IPost } from "../interfaces/IPost";
-import { GetStaticProps } from "next";
-import { GetFactory } from "../Factory/http/GetFactory";
-import { ITag } from "../interfaces/Itag";
-import { ICategoria } from "../interfaces/ICategoria";
+import { Wrapper } from '../PageStyles/Blog.style'
+import { IPost } from '../interfaces/IPost'
+import { GetStaticProps } from 'next'
+import { GetFactory } from '../Factory/http/GetFactory'
+import { ICategoria } from '../interfaces/ICategoria'
 
 interface IBlog{
   Posts: Array<IPost>
@@ -14,8 +13,8 @@ interface IBlog{
   Categorias: Array<ICategoria>
 }
 
-const Blog:React.FC<IBlog> = ({Posts, Destaques, Categorias}) =>{
-  return(
+const Blog:React.FC<IBlog> = ({ Posts, Destaques, Categorias }) => {
+  return (
     <Layout>
       <Wrapper>
         <h1>Blog</h1>
@@ -39,22 +38,15 @@ export const getStaticProps: GetStaticProps = async (context) => {
     body: null
   })
 
-  const ResponseTags = await Get.handle({
-    url: `${process.env.APIURL}/tags`,
-    body: null
-  })
-
-  
   const ResponseCategorias = await Get.handle({
     url: `${process.env.APIURL}/categoria-blogs`,
     body: null
   })
 
-
   const Posts = responsePosts.body.map((post:any):IPost => {
-    return({
+    return ({
       id: post.id,
-      destaque: post.destaque? true: false,
+      destaque: !!post.destaque,
       text: post.text,
       title: post.title,
       url: post.image[0].url || undefined,
@@ -63,9 +55,9 @@ export const getStaticProps: GetStaticProps = async (context) => {
   })
 
   const Destaques = ResponseDestaques.body.map((post:any):IPost => {
-    return({
+    return ({
       id: post.id,
-      destaque: post.destaque? true: false,
+      destaque: !!post.destaque,
       text: post.text,
       title: post.title,
       url: post.image[0].url || undefined,
@@ -73,20 +65,18 @@ export const getStaticProps: GetStaticProps = async (context) => {
     })
   })
 
-
-  const Categorias = ResponseCategorias.body.map((categoria: ICategoria):ICategoria =>{
-    return{
+  const Categorias = ResponseCategorias.body.map((categoria: ICategoria):ICategoria => {
+    return {
       id: categoria.id,
       name: categoria.name
     }
   })
 
-  return{
-    props:{
+  return {
+    props: {
       Posts: Posts,
-      Destaques:  Destaques,
+      Destaques: Destaques,
       Categorias: Categorias
     }
   }
 }
-

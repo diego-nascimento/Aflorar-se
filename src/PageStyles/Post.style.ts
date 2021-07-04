@@ -1,4 +1,4 @@
-import styled from 'styled-components'
+import styled from 'styled-components';
 
 export const Wrapper = styled.div`
   padding: 0px 20px;
@@ -35,8 +35,6 @@ export const Title = styled.h1`
   font-weight: normal;
 `;
 
-
-
 export const Content = styled.section`
   margin-top: 30px;
   line-height: 2rem;
@@ -46,7 +44,6 @@ export const Content = styled.section`
   margin-inline-start: 0px;
   margin-inline-end: 0px;
 `;
-
 
 export const TagList = styled.ul`
   display: flex;

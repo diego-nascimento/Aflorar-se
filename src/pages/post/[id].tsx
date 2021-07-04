@@ -4,8 +4,8 @@ import React from 'react'
 import LayoutBase from '../../Components/Layout/base/Base'
 import { GetFactory } from '../../Factory/http/GetFactory'
 import { IPost } from '../../interfaces/IPost'
-import {Wrapper,ImageContainer, HeaderContainer, Title, Content, TagList, Tag} from '../../PageStyles/Post.style'
-import {Responsable} from '../../Components/Blog/Listing/Listing.style'
+import { Wrapper, ImageContainer, HeaderContainer, Title, Content, TagList, Tag } from '../../PageStyles/Post.style'
+import { Responsable } from '../../Components/Blog/Listing/Listing.style'
 import { ITag } from '../../interfaces/Itag'
 import Link from 'next/link'
 import { ICategoria } from '../../interfaces/ICategoria'
@@ -17,33 +17,32 @@ interface IPostPage{
   Categorias: Array<ICategoria>
 }
 
-const Post : React.FC<IPostPage> = ({Post, Categorias}) =>{
-
-  return(
-      Post && Categorias?
-      (<LayoutBase>
+const Post : React.FC<IPostPage> = ({ Post, Categorias }) => {
+  return (
+    Post && Categorias
+      ? (<LayoutBase>
       <Wrapper className='Container'>
         <CategoryList CategoriaSelected={null} Categorias={Categorias}/>
         <ImageContainer>
           {Post.url && <img src={Post.url} alt={Post.title} />}
         </ImageContainer>
         {
-          Post.tags && Post.tags.length > 0 ?
-            <TagList>
-              <span style={{marginRight: '10px'}}>Tags:</span>
-              {Post.tags && Post.tags.map((tag: ITag) =>{
-                return(
+          Post.tags && Post.tags.length > 0
+            ? <TagList>
+              <span style={{ marginRight: '10px' }}>Tags:</span>
+              {Post.tags && Post.tags.map((tag: ITag) => {
+                return (
                   <Link href={`/blog/tag/${tag.id}?tag=${tag.name}`} key={tag.id}>
                     <a>
-                      <Tag key={tag.id}> 
+                      <Tag key={tag.id}>
                         <span>#{tag.name}</span>
                       </Tag>
                     </a>
-                  </Link> 
+                  </Link>
                 )
               })}
             </TagList>
-          : null
+            : null
         }
         <HeaderContainer>
         <Title>
@@ -52,18 +51,17 @@ const Post : React.FC<IPostPage> = ({Post, Categorias}) =>{
         <Responsable>Publicado por {Post.author}</Responsable>
         </HeaderContainer>
         <Content dangerouslySetInnerHTML={{ __html: marked(Post.text) }} />
-        
+
       </Wrapper>
     </LayoutBase>
-    )
-    : null
+        )
+      : null
   )
 }
- 
 
 export default Post
 
-export async function getStaticPaths() {
+export async function getStaticPaths () {
   const api = GetFactory()
 
   const response = await api.handle({
@@ -75,25 +73,22 @@ export async function getStaticPaths() {
   response.body.forEach((element:IPost) => {
     params.push({
       params: {
-        id: element.id,
-      },
-    });
-  });
+        id: element.id
+      }
+    })
+  })
   return {
     paths: params,
-    fallback: true,
-  };
+    fallback: true
+  }
 }
 
-
-export const getStaticProps: GetStaticProps = async ({params}: any) => {
+export const getStaticProps: GetStaticProps = async ({ params }: any) => {
   const Get = GetFactory()
   const responsePosts = await Get.handle({
     url: `${process.env.APIURL}/posts/${params.id}`,
     body: null
   })
-
-
 
   const ResponseCategorias = await Get.handle({
     url: `${process.env.APIURL}/categoria-blogs`,
@@ -101,11 +96,11 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
   })
 
   const post = responsePosts.body
-  const PublishedDate = new Date(post.published_at? post.published_at : '15:22')
+  const PublishedDate = new Date(post.published_at ? post.published_at : '15:22')
 
   const Post: IPost = {
     id: post.id,
-    destaque: post.destaque? true: false,
+    destaque: !!post.destaque,
     text: post.text,
     title: post.title,
     url: post.image[0].url || undefined,
@@ -114,18 +109,17 @@ export const getStaticProps: GetStaticProps = async ({params}: any) => {
     published_at: `${PublishedDate.getUTCDate()} de ${getMonth(PublishedDate.getMonth())} de ${PublishedDate.getFullYear()}`
   }
 
-  const Categorias = ResponseCategorias.body.map((categoria: ICategoria):ICategoria =>{
-    return{
+  const Categorias = ResponseCategorias.body.map((categoria: ICategoria):ICategoria => {
+    return {
       id: categoria.id,
       name: categoria.name
     }
   })
-    
-  return{
-    props:{
+
+  return {
+    props: {
       Post: Post,
       Categorias: Categorias
     }
   }
 }
-

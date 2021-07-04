@@ -1,4 +1,4 @@
-import { HttpRequest, HttpResponse } from "../../Domain/Protocols/httpHelpers";
+import { HttpResponse } from "../../Domain/Protocols/httpHelpers";
 
 export interface IGetInfra{
   Get(httpRequest: IGetEntry):Promise<HttpResponse>
