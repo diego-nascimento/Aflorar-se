@@ -1,12 +1,12 @@
-import React from "react";
+import React from 'react'
 import Layout from '../../../Components/Layout/base/Base'
 import BlogBase from '../../../Components/Blog/Base/Index'
-import {Wrapper} from '../../../PageStyles/Blog.style'
-import { IPost } from "../../../interfaces/IPost";
-import { GetStaticProps } from "next";
-import { GetFactory } from "../../../Factory/http/GetFactory";
-import { ITag } from "../../../interfaces/Itag";
-import { ICategoria } from "../../../interfaces/ICategoria";
+import { Wrapper } from '../../../PageStyles/Blog.style'
+import { IPost } from '../../../interfaces/IPost'
+import { GetStaticProps } from 'next'
+import { GetFactory } from '../../../Factory/http/GetFactory'
+import { ITag } from '../../../interfaces/Itag'
+import { ICategoria } from '../../../interfaces/ICategoria'
 
 interface IBlog{
   Posts: Array<IPost>
@@ -16,23 +16,22 @@ interface IBlog{
   Categorias: Array<ICategoria>
 }
 
-const Blog:React.FC<IBlog> = ({Posts, Destaques, Categoria, Categorias}) =>{
-  return(
+const Blog:React.FC<IBlog> = ({ Posts, Destaques, Categoria, Categorias }) => {
+  return (
     Posts && Destaques && Categorias && Categoria
-    ?
-    <Layout>
+      ? <Layout>
       <Wrapper>
         <h1>{Categoria.name}</h1>
         <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={false} Categorias={Categorias} CategoriaSelected={Categoria}/>
       </Wrapper>
     </Layout>
-    : null
+      : null
   )
 }
 
 export default Blog
 
-export async function getStaticPaths() {
+export async function getStaticPaths () {
   const api = GetFactory()
 
   const response = await api.handle({
@@ -44,17 +43,17 @@ export async function getStaticPaths() {
   response.body.forEach((element:ICategoria) => {
     params.push({
       params: {
-        id: element.id,
-      },
-    });
-  });
+        id: element.id
+      }
+    })
+  })
   return {
     paths: params,
-    fallback: true,
-  };
+    fallback: true
+  }
 }
 
-export const getStaticProps: GetStaticProps = async ({params}:any) => {
+export const getStaticProps: GetStaticProps = async ({ params }:any) => {
   const Get = GetFactory()
   const responsePosts = await Get.handle({
     url: `${process.env.APIURL}/posts?categoria_blog.id=${params.id}`,
@@ -82,9 +81,9 @@ export const getStaticProps: GetStaticProps = async ({params}:any) => {
   })
 
   const Posts = responsePosts.body.map((post:any):IPost => {
-    return({
+    return ({
       id: post.id,
-      destaque: post.destaque? true: false,
+      destaque: !!post.destaque,
       text: post.text,
       title: post.title,
       url: post.image[0].url || undefined,
@@ -93,9 +92,9 @@ export const getStaticProps: GetStaticProps = async ({params}:any) => {
   })
 
   const Destaques = ResponseDestaques.body.map((post:any):IPost => {
-    return({
+    return ({
       id: post.id,
-      destaque: post.destaque? true: false,
+      destaque: !!post.destaque,
       text: post.text,
       title: post.title,
       url: post.image[0].url || undefined,
@@ -103,36 +102,32 @@ export const getStaticProps: GetStaticProps = async ({params}:any) => {
     })
   })
 
-  const Tags = ResponseTags.body.map((tag: ITag):ITag =>{
-    return{
+  const Tags = ResponseTags.body.map((tag: ITag):ITag => {
+    return {
       id: tag.id,
       name: tag.name
     }
   })
-
- 
-
 
   const ActualCategoria:ICategoria = {
     id: ResponseActualCategoria.body.id,
     name: ResponseActualCategoria.body.name
   }
 
-  const Categorias = ResponseCategorias.body.map((categoria: ICategoria):ICategoria =>{
-    return{
+  const Categorias = ResponseCategorias.body.map((categoria: ICategoria):ICategoria => {
+    return {
       id: categoria.id,
       name: categoria.name
     }
   })
 
-  return{
-    props:{
+  return {
+    props: {
       Posts: Posts,
-      Destaques:  Destaques,
+      Destaques: Destaques,
       Tags: Tags,
       Categorias: Categorias,
       Categoria: ActualCategoria
     }
   }
 }
-
