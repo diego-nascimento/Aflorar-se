@@ -52,7 +52,7 @@ describe('Get-Data', () => {
     expect(response).toEqual({ statusCode: 404, body: 'Algo deu errado, tente Novamente Mais tarde' })
   })
 
-  test('Should return statusCode 200 and body if httpGetter return 200.', async () => {
+  test('Should return statusCode 200 and body if httpGetter return 200!', async () => {
     const { sut, httpGetterMocked } = makeSut()
     const params:HttpRequest = {
       body: faker.random.objectElement(),
