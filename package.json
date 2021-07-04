@@ -11,12 +11,6 @@
     "test:ci": "yarn test -- --coverage",
     "test:staged": "yarn test -- --findRelatedTests"
   },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged",
-      "pre-push": "yarn test:ci"
-    }
-  },
   "lint-staged": {
     "*.{ts, tsx}": [
       "eslint 'src/** --fix",
