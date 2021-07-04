@@ -10,12 +10,12 @@ export const Wrapper = styled.section`
     border-left: 4px solid red;
     padding-left: 5px;
   }
-`;
+`
 
 export const ListItems = styled.ul`
   display: flex;
   flex-direction: column;
-`;
+`
 
 export const Item = styled.li`
   width: 100%;
@@ -38,7 +38,7 @@ export const Item = styled.li`
       transform: scale(1.1);
     }
   }
-`;
+`
 
 interface IImageContainer{
   url: string
@@ -51,7 +51,7 @@ export const ImageContainer = styled.div<IImageContainer>`
   width: 100%;
   height: 100%;
   transition: .2s;
-`;
+`
 
 export const Title = styled.h2`
   position: absolute;
@@ -61,4 +61,4 @@ export const Title = styled.h2`
   background: rgba(0,0,0, .8);
   font-size: 1.1rem;
   padding: 2px 4px;
-`;
+`

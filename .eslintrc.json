@@ -33,6 +33,8 @@
         "no-case-declarations": 0,
         "camelcase": "off",
         "new-cap":"off",
-        "no-undef": "off"
+        "no-undef": "off",
+        "array-callback-return":  "off",
+        "react/react-in-jsx-scope": 0
     }
 }

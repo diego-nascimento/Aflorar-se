@@ -6,8 +6,6 @@ import { IGetEntry, IGetInfra } from '../../Data/Protocols/IGetInfra '
 jest.mock('axios')
 const mockedAxios = axios as jest.Mocked<typeof axios>
 
-const baseURL = 'https://libido-strapi.herokuapp.com'
-
 const makeSut = (): IGetInfra => {
   return new GetInfra()
 }

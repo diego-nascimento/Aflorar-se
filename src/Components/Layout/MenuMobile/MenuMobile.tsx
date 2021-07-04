@@ -1,22 +1,22 @@
 import React from 'react'
-import {Wrapper, Background, ListaMenu, Item} from './MenuMobile.style'
-import {useMenu} from '../../../Contexts/MenuContexts'
+import { Wrapper, Background, ListaMenu, Item } from './MenuMobile.style'
+import { useMenu } from '../../../Contexts/MenuContexts'
 import Link from 'next/link'
 
-const MenuMobile: React.FC = () =>{
-  const {MenuState, setMenuState} = useMenu()
+const MenuMobile: React.FC = () => {
+  const { MenuState, setMenuState } = useMenu()
 
-  const checkResize = () =>{
-    window.addEventListener('resize', () =>{
+  const checkResize = () => {
+    window.addEventListener('resize', () => {
       setMenuState(false)
     })
   }
 
-  React.useEffect(() =>{
+  React.useEffect(() => {
     checkResize()
   })
 
-  return(
+  return (
     <>
     <Background MenuState={MenuState} onClick={() => setMenuState(false)}/>
     <Wrapper MenuState={MenuState}>
@@ -58,7 +58,7 @@ const MenuMobile: React.FC = () =>{
         </Item>
       </ListaMenu>
     </Wrapper>
-   </> 
+   </>
   )
 }
 

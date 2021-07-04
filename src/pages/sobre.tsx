@@ -1,9 +1,9 @@
 import React from 'react'
 import LayoutBase from '../Components/Layout/base/Base'
-import {WrapperProjeto, LogoContainer, WrapperMembers,ListMembers, Member, Photo, Description,Content, SocialMedia} from '../PageStyles/Sobre.style'
-import {ImFacebook, } from 'react-icons/im'
-import {AiOutlineInstagram, AiOutlineWhatsApp} from 'react-icons/ai'
-import {FaTwitter} from 'react-icons/fa'
+import { WrapperProjeto, LogoContainer, WrapperMembers, ListMembers, Member, Photo, Description, Content, SocialMedia } from '../PageStyles/Sobre.style'
+import { ImFacebook } from 'react-icons/im'
+import { AiOutlineInstagram, AiOutlineWhatsApp } from 'react-icons/ai'
+import { FaTwitter } from 'react-icons/fa'
 import { IMember } from '../interfaces/IMember'
 import { GetFactory } from '../Factory/http/GetFactory'
 import { GetStaticProps } from 'next'
@@ -20,8 +20,8 @@ interface ISobre{
   data: IData
 }
 
-const Sobre: React.FC<ISobre> = ({data}) =>{
-  return(
+const Sobre: React.FC<ISobre> = ({ data }) => {
+  return (
     <LayoutBase >
       <WrapperProjeto className="Container">
         <h1>Nosso Projeto</h1>
@@ -33,8 +33,8 @@ const Sobre: React.FC<ISobre> = ({data}) =>{
       <WrapperMembers className='Container'>
         <h1>Sobre a Equipe</h1>
         <ListMembers>
-          {data.membros && data.membros.map((membro:IMember) =>{
-            return(
+          {data.membros && data.membros.map((membro:IMember) => {
+            return (
               <Member key={membro.id}>
                 <Photo className='Photo'>
                   <img src={membro.photo.url} alt={membro.name} />
@@ -43,11 +43,11 @@ const Sobre: React.FC<ISobre> = ({data}) =>{
                   <h2>{membro.name}</h2>
                   <Content dangerouslySetInnerHTML={{ __html: marked(membro.text) }} />
                   <SocialMedia>
-                    {membro.facebook && 
+                    {membro.facebook &&
                     <Link href={membro.facebook}>
                       <a target='blank'><ImFacebook /></a>
                     </Link>}
-                    {membro.instagram && 
+                    {membro.instagram &&
                     <Link href={membro.instagram}>
                       <a target='blank'><AiOutlineInstagram /></a>
                     </Link>}
@@ -56,10 +56,10 @@ const Sobre: React.FC<ISobre> = ({data}) =>{
                       <a target='blank'><AiOutlineWhatsApp /></a>
                     </Link>
                     }
-                    {membro.twitter &&  
+                    {membro.twitter &&
                     <Link href={membro.twitter}>
                       <a target='blank'><FaTwitter /></a>
-                    </Link> }                                 
+                    </Link> }
                   </SocialMedia>
                 </Description>
               </Member>
@@ -75,10 +75,10 @@ export default Sobre
 
 export const getStaticProps: GetStaticProps = async (context) => {
   const Get = GetFactory()
-  const response = await Get.handle({url: `${process.env.APIURL}/aflorar-se-sobre`, body: null})
-  return{
-    props:{
-      data:{
+  const response = await Get.handle({ url: `${process.env.APIURL}/aflorar-se-sobre`, body: null })
+  return {
+    props: {
+      data: {
         id: response.body.id,
         membros: response.body.membros,
         descricao_projeto: response.body.descricao_projeto

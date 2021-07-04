@@ -1,4 +1,4 @@
-import styled, {createGlobalStyle} from 'styled-components'
+import { createGlobalStyle } from 'styled-components'
 
 export const GlobalStyles = createGlobalStyle`
   *{
@@ -80,5 +80,4 @@ export const GlobalStyles = createGlobalStyle`
       line-height: .9rem;
     }
   }
-`;
-
+`

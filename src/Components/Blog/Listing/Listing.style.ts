@@ -3,12 +3,10 @@ import styled from 'styled-components'
 export const Wrapper = styled.div`
   width: 100%;
   padding: 0px 15px;
-`;
-
-
+`
 
 export const PostList = styled.ul`
-`;
+`
 
 export const Post = styled.li`
   width: calc(100% - 20px);
@@ -25,7 +23,7 @@ export const Post = styled.li`
   @media(max-width: 900px){
     grid-template-columns: 1fr;
   }
-`;
+`
 
 export const ImageContainer = styled.div`
   width: 100%;
@@ -50,7 +48,7 @@ export const ImageContainer = styled.div`
     height: 250px;
     transition: .3s;
   }
-`;
+`
 
 export const TextContainer = styled.div`
   display: flex;
@@ -62,13 +60,13 @@ export const TextContainer = styled.div`
   @media(max-width: 900px){
     margin-top: 20px;
   }
-`;
+`
 
 export const Title = styled.h2`
   :hover{
     text-decoration: underline;
   }
-`;
+`
 
 export const TextResumed = styled.div`
   width: 100%;
@@ -82,7 +80,7 @@ export const TextResumed = styled.div`
   @media(max-width: 800px){
     font-size: 1rem;
   }
-`;
+`
 
 export const Responsable = styled.div`
   flex: 1;
@@ -96,12 +94,9 @@ export const Responsable = styled.div`
     border-radius: 3px;
     transition: .3s;
   }
-`;
+`
 
-
-
-
-/*-------------------Mobile */
+/* -------------------Mobile */
 
 interface IMenuState {
   active: boolean
@@ -121,20 +116,18 @@ export const ContainerMobile = styled.nav<IMenuState>`
     padding: 5px 20px;
     border: 1px solid #000;
     svg{
-      transform: ${({active}) => active ?'rotate(180deg)':'rotate(0deg)'};
+      transform: ${({ active }) => active ? 'rotate(180deg)' : 'rotate(0deg)'};
     }
 
     p{
       margin: auto 0;
     }
   }
-`;
-
-
+`
 
 export const CategoriaOptions = styled.ul<IMenuState>`
   position: absolute;
-  display: ${({active}) => active? 'flex': 'none'};
+  display: ${({ active }) => active ? 'flex' : 'none'};
   background: white;
   top: 30px;
   width: 100%;
@@ -143,7 +136,7 @@ export const CategoriaOptions = styled.ul<IMenuState>`
   left: 0px;
   border-top: 1px solid #aaa;
   border-bottom: 1px solid #aaa;
-`;
+`
 
 export const CategoriaOption = styled.li`
   padding: 5px 10px;
@@ -153,4 +146,4 @@ export const CategoriaOption = styled.li`
   :hover{
     text-decoration: underline;
   }
-`;
+`

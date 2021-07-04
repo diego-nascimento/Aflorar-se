@@ -1,25 +1,24 @@
 import React from 'react'
-import {Wrapper, Container, Logo, Navegation} from './Header.style'
+import { Wrapper, Container, Logo, Navegation } from './Header.style'
 import Link from 'next/link'
 import MenuMobile from '../MenuMobile/MenuMobile'
-import {FiMenu} from 'react-icons/fi'
-import {useMenu} from '../../../Contexts/MenuContexts'
+import { FiMenu } from 'react-icons/fi'
+import { useMenu } from '../../../Contexts/MenuContexts'
 
-const Header: React.FC = () =>{
+const Header: React.FC = () => {
+  const { MenuState, setMenuState } = useMenu()
 
-  const {MenuState,setMenuState} = useMenu()
-
-  return(
+  return (
     <Wrapper>
-      <Container  className='Container' MenuState={MenuState}>
+      <Container className='Container' MenuState={MenuState}>
         <FiMenu onClick={() => setMenuState(!MenuState)}/>
-        <MenuMobile  />
+        <MenuMobile />
         <Link href="/">
           <a>
             <Logo>Aflorar-se</Logo>
           </a>
         </Link>
-        
+
         <Navegation>
           <Link href="http://www.libidoss.com.br" >
             <a target='blank'>
@@ -44,7 +43,7 @@ const Header: React.FC = () =>{
         </Navegation>
       </Container>
     </Wrapper>
-    
+
   )
 }
 

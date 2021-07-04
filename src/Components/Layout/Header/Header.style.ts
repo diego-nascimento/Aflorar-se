@@ -1,5 +1,5 @@
 import styled from 'styled-components'
-import {styles} from  '../../../styles/theme.styles'
+import { styles } from '../../../styles/theme.styles'
 
 export const Wrapper = styled.div`
   width: 100vw;
@@ -7,7 +7,7 @@ export const Wrapper = styled.div`
   justify-content: center;
   background: ${styles.ComponentBGDark};
   color: ${styles.fontColorLight};
-`;
+`
 
 interface IContainer{
   MenuState: boolean
@@ -31,23 +31,22 @@ export const Container = styled.div<IContainer>`
 
     @media(max-width: 800px){
       display: flex;  
-      position: ${props => props.MenuState === true ? 'fixed': 'block'};
-      color: ${props => props.MenuState === true ? 'black': 'white'}
+      position: ${props => props.MenuState === true ? 'fixed' : 'block'};
+      color: ${props => props.MenuState === true ? 'black' : 'white'}
     }
   }
 
   @media(max-width: 800px){
     justify-content: space-between;
   }
-`;
+`
 
 export const Logo = styled.h2`
   letter-spacing: .3rem;
   text-transform: uppercase;
   font-weight: bold;
   display: flex;
-`;
-
+`
 
 export const Navegation = styled.nav`
   display: flex;

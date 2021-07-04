@@ -12,4 +12,4 @@ export const Wrapper = styled.section`
 
     grid-row-gap: 20px;
   }
-`;
+`

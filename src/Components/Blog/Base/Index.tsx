@@ -1,5 +1,5 @@
 import React from 'react'
-import {Wrapper, } from './BlogBase.style'
+import { Wrapper } from './BlogBase.style'
 import Listing from '../Listing/Listing'
 import Destaques from '../Destaques/Destaques'
 import { IPost } from '../../../interfaces/IPost'
@@ -13,10 +13,10 @@ interface IBlogBase {
   CategoriaSelected?: ICategoria | null
 }
 
-const BlogBase: React.FC<IBlogBase> = ({DestaquesData, Posts, FullOrNot, Categorias, CategoriaSelected}) =>{
-  return(
+const BlogBase: React.FC<IBlogBase> = ({ DestaquesData, Posts, FullOrNot, Categorias, CategoriaSelected }) => {
+  return (
     <Wrapper className='Container'>
-      <Listing Posts={Posts} FullOrNot={FullOrNot} Categorias={Categorias} CategoriaSelected={CategoriaSelected? CategoriaSelected : null}/>
+      <Listing Posts={Posts} FullOrNot={FullOrNot} Categorias={Categorias} CategoriaSelected={CategoriaSelected || null}/>
       <Destaques Data={DestaquesData}/>
     </Wrapper>
   )

@@ -13,7 +13,7 @@ export const Wrapper = styled.nav<IWrapper>`
   left: 0px;
   background: white;
   height: 100vh;
-  transform: ${props => props.MenuState? 'translateX(0%)':'translateX(-100%)'};
+  transform: ${props => props.MenuState ? 'translateX(0%)' : 'translateX(-100%)'};
   transition: .5s;
   border: 1px solid rgba(0,0,0, .3);
   z-index: 98;
@@ -21,24 +21,24 @@ export const Wrapper = styled.nav<IWrapper>`
   @media(max-width: 800px){
     display: flex;
   }
-`;
+`
 
 export const Background = styled.div<IWrapper>`
   z-index: 50;
   width: 100vw;
   height: 100vh;
-  display: ${props => props.MenuState? 'block': 'none'};
+  display: ${props => props.MenuState ? 'block' : 'none'};
   background-color: rgba(0,0,0, .5);
   position: fixed;
   top: 0px;
   left: 0px;
-`;
+`
 export const ListaMenu = styled.ul`
   width: 100%;
   display: flex;
   flex-direction: column;
   margin-top: 50px;
-`;
+`
 
 export const Item = styled.li`
   width: 100%;
@@ -54,4 +54,4 @@ export const Item = styled.li`
     color: #111;
   }
 
-`;
+`
