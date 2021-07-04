@@ -17,6 +17,12 @@
       "pre-push": "yarn test:ci"
     }
   },
+  "lint-staged": {
+    "*.{ts, tsx}": [
+      "eslint 'src/** --fix",
+      "git add ."
+    ]
+  },
   "dependencies": {
     "@types/axios-mock-adapter": "^1.10.0",
     "@types/faker": "^5.5.6",
