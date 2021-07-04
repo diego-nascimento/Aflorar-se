@@ -1,6 +1,5 @@
 {
   "*.{ts, tsx}": [
-    "eslint 'src/** --fix",
-    "yarn test:ci"
+    "eslint 'src/** --fix"
   ]
 }
