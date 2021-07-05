@@ -7,55 +7,61 @@ export const WrapperProjeto = styled.section`
   flex-direction: column;
   width: 100vw;
 
-  h1{
+  @media(max-width: 800px){
     padding: 0px 20px;
   }
-`;
+`
 
 export const LogoContainer = styled.div`
-  width: 100vw;
 
   img{
     width: 100%;
   }
-`;
+`
 
 export const WrapperMembers = styled.section`
-  width: 100vw;
+  margin-top: 30px;
 
   h1{
+    text-align: center;
+    padding: 0 20px;
+  }
+
+  @media(max-width: 800px){
     padding: 0px 20px;
   }
-`;
+`
 
 export const ListMembers = styled.ul`
   display:flex;
   flex-direction: column;
-  width: 100vw;
   margin-top: 50px;
 
-`;
+`
+type IMemberIndex ={
+  index: number
+}
 
-export const Member = styled.li`
+export const Member = styled.li<IMemberIndex>`
   display: grid;
-  grid-template-columns: 2fr 3fr;
+  grid-template-columns:1fr 2fr;
   grid-gap: 30px;
   margin-top: 30px;
-  padding: 0px 20px;
+  width: 100%;
 
   :first-child{
     margin-top: 0px;
   }
 
   :nth-child(even){
-    direction: rtl;
+    direction: rtl
   }
 
   @media(max-width: 800px){
     grid-template-columns: 1fr;
     padding: 0px 10px;
   }
-`;
+`
 
 export const Photo = styled.div`
   width: 100%;
@@ -87,24 +93,22 @@ export const Photo = styled.div`
       object-position: top;
     }
   }
-`;
+`
 
 export const Description = styled.div`
+  width: 100%;
   display: flex;
   text-align: left;
   flex-direction: column;
   border-bottom: .1rem solid #ccc;
-
-`;
+`
 
 export const Content = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: center;
-  align-items: center;
   margin-top: 20px;
-  padding: 0px 20px;
 
   img{
     max-height: 500px;
@@ -114,7 +118,7 @@ export const Content = styled.div`
     font-size: 1.1rem;
     text-align: left;
   }
-`;
+`
 
 export const SocialMedia = styled.section`
   justify-self: flex-end;
@@ -124,4 +128,4 @@ export const SocialMedia = styled.section`
     height: 25px;
     margin: 10px 5px;
   }
-`;
+`

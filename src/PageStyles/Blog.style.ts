@@ -5,4 +5,4 @@ export const Wrapper = styled.div`
     font-size: 2rem;
     padding: 0 20px;
   }
-`;
+`

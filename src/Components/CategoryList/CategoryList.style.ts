@@ -1,7 +1,7 @@
 import styled from 'styled-components'
 
 export const CategoriaList = styled.ul`
-`;
+`
 
 interface ICategoriaStyle{
   active: boolean
@@ -13,13 +13,13 @@ export const Categoria = styled.li<ICategoriaStyle>`
   margin-left: 5px;
   font-size: 1.2rem;
   display: inline-block;
-  background: ${({active}) => active ? "#ddd":'none' };
+  background: ${({ active }) => active ? '#ddd' : 'none'};
 
   :hover{
-    text-decoration: ${({active}) => active? 'none': 'underline' };
+    text-decoration: ${({ active }) => active ? 'none' : 'underline'};
   }
 
   @media(max-width: 800px){
     display: none;
   }
-`;
+`

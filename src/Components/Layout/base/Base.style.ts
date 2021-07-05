@@ -15,4 +15,4 @@ export const Container = styled.div`
     flex-direction: column;
     margin: 30px 0px;
   }
-`;
+`

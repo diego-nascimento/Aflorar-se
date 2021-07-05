@@ -12,6 +12,6 @@ const mesesExtenso = [
   'novembro',
   'dezembro'
 ]
-export const getMonth = (month: number):string | null =>{
-  return month > 11 || month < 0? mesesExtenso[month]: null
+export const getMonth = (month: number):string | null => {
+  return month > 11 || month < 0 ? mesesExtenso[month] : null
 }

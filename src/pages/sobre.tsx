@@ -33,11 +33,11 @@ const Sobre: React.FC<ISobre> = ({ data }) => {
       <WrapperMembers className='Container'>
         <h1>Sobre a Equipe</h1>
         <ListMembers>
-          {data.membros && data.membros.map((membro:IMember) => {
+          {data.membros && data.membros.map((membro:IMember, index) => {
             return (
-              <Member key={membro.id}>
+              <Member key={membro.id} index={index}>
                 <Photo className='Photo'>
-                  <img src={membro.photo.url} alt={membro.name} />
+                  {membro.photo && <img src={membro.photo.url} alt={membro.name} />}
                 </Photo>
                 <Description className='Description'>
                   <h2>{membro.name}</h2>
