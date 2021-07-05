@@ -7,18 +7,18 @@ import { GetStaticProps } from 'next'
 import { GetFactory } from '../Factory/http/GetFactory'
 import { ICategoria } from '../interfaces/ICategoria'
 
-interface IBlog{
+interface IBlog {
   Posts: Array<IPost>
   Destaques: Array<IPost>
   Categorias: Array<ICategoria>
 }
 
-const Blog:React.FC<IBlog> = ({ Posts, Destaques, Categorias }) => {
+const Blog: React.FC<IBlog> = ({ Posts, Destaques, Categorias }) => {
   return (
     <Layout>
       <Wrapper>
         <h1>Blog</h1>
-        <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={false} Categorias={Categorias}/>
+        <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={false} Categorias={Categorias} />
       </Wrapper>
     </Layout>
   )
@@ -43,7 +43,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     body: null
   })
 
-  const Posts = responsePosts.body.map((post:any):IPost => {
+  const Posts = responsePosts.body.map((post: any): IPost => {
     return ({
       id: post.id,
       destaque: !!post.destaque,
@@ -54,7 +54,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     })
   })
 
-  const Destaques = ResponseDestaques.body.map((post:any):IPost => {
+  const Destaques = ResponseDestaques.body.map((post: any): IPost => {
     return ({
       id: post.id,
       destaque: !!post.destaque,
@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     })
   })
 
-  const Categorias = ResponseCategorias.body.map((categoria: ICategoria):ICategoria => {
+  const Categorias = ResponseCategorias.body.map((categoria: ICategoria): ICategoria => {
     return {
       id: categoria.id,
       name: categoria.name
