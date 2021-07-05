@@ -107,8 +107,8 @@ export const Content = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   margin-top: 20px;
+  height: 100%;
 
   img{
     max-height: 500px;
@@ -127,5 +127,12 @@ export const SocialMedia = styled.section`
     width: 25px;
     height: 25px;
     margin: 10px 5px;
+    transition: .3s;
+
+    :hover{
+      transform: scale(1.1);
+    }
   }
+
+  
 `
