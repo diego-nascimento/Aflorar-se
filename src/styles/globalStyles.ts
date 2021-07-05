@@ -17,11 +17,13 @@ export const GlobalStyles = createGlobalStyle`
     justify-content: center;
     min-height: 100%;
     overflow-x: hidden;
+    //background-image: url('/fundo.png');
+    font-family: 'Open Sans', sans-serif;
   }
 
   h1{
     font-size: 2.7rem;
-
+    font-weight: bolder;
   }
 
   h2{

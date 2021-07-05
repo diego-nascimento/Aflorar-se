@@ -24,7 +24,6 @@ const Sobre: React.FC<ISobre> = ({ data }) => {
   return (
     <LayoutBase >
       <WrapperProjeto className="Container">
-        <h1>Nosso Projeto</h1>
         <LogoContainer>
           <img src="/banner1.jpg" alt="Banner" />
         </LogoContainer>

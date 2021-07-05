@@ -32,7 +32,7 @@ export const Container = styled.div<IContainer>`
     @media(max-width: 800px){
       display: flex;  
       position: ${props => props.MenuState === true ? 'fixed' : 'block'};
-      color: ${props => props.MenuState === true ? 'black' : 'white'}
+      color: ${props => props.MenuState === true ? 'black' : 'white'};
     }
   }
 
