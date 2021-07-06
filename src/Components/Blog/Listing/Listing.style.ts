@@ -31,18 +31,6 @@ export const ImageContainer = styled.div`
   justify-content: center;
   overflow: hidden;
 
-  :hover{
-    img{
-      transform: scale(1.1);
-    }
-
-    .Author{
-      p{
-        background-color: #111;
-      }
-    }
-  }
-
   img{
     width: 100%;
     transition: .3s;
@@ -55,6 +43,10 @@ export const TextContainer = styled.div`
   width: 100%;
   padding: 0px 10px;
   position: relative;
+
+  img{
+    display: none;
+  }
 
   @media(max-width: 900px){
     margin-top: 20px;
