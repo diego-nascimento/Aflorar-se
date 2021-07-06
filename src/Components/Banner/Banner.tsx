@@ -15,7 +15,7 @@ export interface TypeBanner {
 
 const Banner : React.FC<IBanner> = ({ banners }) => {
   return (
-    <Container>
+    <Container className='Container'>
       <Carousel
         controls={true}
         touch={true}

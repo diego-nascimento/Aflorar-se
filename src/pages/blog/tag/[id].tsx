@@ -65,7 +65,7 @@ export const getStaticProps: GetStaticProps = async ({ params }:any) => {
   })
 
   const ResponseTags = await Get.handle({
-    url: `${process.env.APIURL}/tags`,
+    url: `${process.env.APIURL}/tags/${params.id}`,
     body: null
   })
 
@@ -96,12 +96,10 @@ export const getStaticProps: GetStaticProps = async ({ params }:any) => {
     })
   })
 
-  const ActualTag = ResponseTags.body.map((tag: ITag):ITag => {
-    return {
-      id: tag.id,
-      name: tag.name
-    }
-  })
+  const ActualTag = {
+    id: ResponseTags.body.id,
+    name: ResponseTags.body.name
+  }
 
   const Categorias = ResponseCategorias.body.map((categoria: ICategoria):ICategoria => {
     return {
@@ -114,7 +112,7 @@ export const getStaticProps: GetStaticProps = async ({ params }:any) => {
     props: {
       Posts: Posts,
       Destaques: Destaques,
-      Tag: ActualTag[0],
+      Tag: ActualTag,
       Categorias: Categorias
     }
   }
