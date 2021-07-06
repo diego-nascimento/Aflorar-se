@@ -21,7 +21,8 @@ const Banners: Array<TypeBanner> = [
   },
   {
     url: '/banner2.jpg',
-    title: 'Equipe Responsavel'
+    title: 'Equipe Responsavel',
+    link: 'https://aflorar-se.vercel.app/sobre'
   },
   {
     url: '/banner3.jpg',
