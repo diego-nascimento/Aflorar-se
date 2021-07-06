@@ -39,6 +39,20 @@ export const Content = styled.section`
   margin-block-end: 1em;
   margin-inline-start: 0px;
   margin-inline-end: 0px;
+  display: flex;
+  flex-direction: column;
+  
+
+  img{
+    width: 70%;
+    margin:0 auto; 
+    text-align:center;
+    display:table;
+
+    @media(max-width: 800px){
+      width: 100%;
+    }
+  }
 `
 
 export const TagList = styled.ul`
