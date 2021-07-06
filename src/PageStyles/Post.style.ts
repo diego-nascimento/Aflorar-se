@@ -13,14 +13,6 @@ export const ImageContainer = styled.div`
   
   img{
     width: 100%;
-    height: 400px;
-  }
-
-  @media(max-width: 900px){
-    img{
-      height: 200px;
-    }
-    
   }
 `
 
@@ -33,6 +25,10 @@ export const HeaderContainer = styled.div`
 export const Title = styled.h1`
   font-size: 1.8rem;
   font-weight: normal;
+
+  @media(max-width: 600px){
+    font-size: 1.3rem;
+  }
 `
 
 export const Content = styled.section`

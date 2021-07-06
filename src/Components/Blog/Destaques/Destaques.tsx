@@ -9,7 +9,8 @@ interface IDestaques{
 
 const Destaques : React.FC<IDestaques> = ({ Data }) => {
   return (
-    <Wrapper>
+    Data && Array.isArray(Data) && Data.length > 0
+      ? <Wrapper>
       <h3>Destaques que você pode gostar</h3>
       <ListItems>
         {Data && Data.map((Post:IPost) => {
@@ -31,6 +32,7 @@ const Destaques : React.FC<IDestaques> = ({ Data }) => {
       </ListItems>
 
     </Wrapper>
+      : null
   )
 }
 

@@ -45,7 +45,6 @@ export const ImageContainer = styled.div`
 
   img{
     width: 100%;
-    height: 250px;
     transition: .3s;
   }
 `
@@ -87,13 +86,7 @@ export const Responsable = styled.div`
   display: flex;
   align-items: flex-end;
   margin-top: 10px;
-
-  p{
-    padding: 2px 5px;
-    background: #eee;
-    border-radius: 3px;
-    transition: .3s;
-  }
+  font-size: .8rem;
 `
 
 /* -------------------Mobile */
