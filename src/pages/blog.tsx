@@ -49,8 +49,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       destaque: !!post.destaque,
       text: post.text,
       title: post.title,
-      url: post.image[0].url || undefined,
-      author: `${post.admin_user.firstname} ${post.admin_user.lastname}`
+      url: post.image.length > 0 ? post.image[0].url : null
     })
   })
 
@@ -60,8 +59,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
       destaque: !!post.destaque,
       text: post.text,
       title: post.title,
-      url: post.image[0].url || undefined,
-      author: `${post.admin_user.firstname} ${post.admin_user.lastname}`
+      url: post.image.length > 0 ? post.image[0].url : null
     })
   })
 

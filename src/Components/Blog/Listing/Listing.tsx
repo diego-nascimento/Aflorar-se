@@ -26,9 +26,6 @@ const Listing : React.FC<IListing> = ({ Posts, FullOrNot, Categorias, CategoriaS
             <TextContainer>
               <Title>{PostData.title}</Title>
               <TextResumed dangerouslySetInnerHTML={{ __html: marked(PostData.text) }} />
-                <Responsable className='Author'>
-                  <p>Por {PostData.author}</p>
-                </Responsable>
             </TextContainer>
           </Post>
         </a>

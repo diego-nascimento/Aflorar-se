@@ -30,12 +30,15 @@ const Banners: Array<TypeBanner> = [
     link: 'https://www.libidoss.com.br'
   }
 ]
-const Home: React.FC<IHome> = ({ Posts, Destaques, Categorias }) => (
-  <LayoutBase>
-    <Banner banners={Banners} />
-    <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot Categorias={Categorias} CategoriaSelected={null} />
-  </LayoutBase>
-)
+const Home: React.FC<IHome> = ({ Posts, Destaques, Categorias }) => {
+  console.log(Posts, Destaques, Categorias)
+  return (
+    <LayoutBase>
+      <Banner banners={Banners} />
+      <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot Categorias={Categorias} CategoriaSelected={null} />
+    </LayoutBase>
+  )
+}
 
 export default Home
 
@@ -62,13 +65,14 @@ export const getStaticProps: GetStaticProps = async (context) => {
     body: null
   })
 
+  console.log(responsePosts.body[0].admin_user)
+
   const Posts = responsePosts.body.map((post:any):IPost => ({
     id: post.id,
     destaque: !!post.destaque,
     text: post.text,
     title: post.title,
-    url: post.image[0].url,
-    author: `${post.admin_user.firstname} ${post.admin_user.lastname}`
+    url: post.image.length > 0 ? post.image[0].url : null
   }))
 
   const Destaques = ResponseDestaques.body.map((post:any):IPost => ({
@@ -76,8 +80,7 @@ export const getStaticProps: GetStaticProps = async (context) => {
     destaque: !!post.destaque,
     text: post.text,
     title: post.title,
-    url: post.image[0].url,
-    author: `${post.admin_user.firstname} ${post.admin_user.lastname}`
+    url: post.image.length > 0 ? post.image[0].url : null
   }))
 
   const Tags = ResponseTags.body.map((tag: ITag):ITag => ({

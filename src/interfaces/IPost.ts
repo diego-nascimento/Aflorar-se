@@ -6,7 +6,6 @@ export interface IPost{
   text: string,
   url: string,
   destaque: boolean,
-  author: string
   tags?: Array<ITag>
   published_at?: string
 }
