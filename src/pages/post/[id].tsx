@@ -5,7 +5,6 @@ import LayoutBase from '../../Components/Layout/base/Base'
 import { GetFactory } from '../../Factory/http/GetFactory'
 import { IPost } from '../../interfaces/IPost'
 import { Wrapper, ImageContainer, HeaderContainer, Title, Content, TagList, Tag } from '../../PageStyles/Post.style'
-import { Responsable } from '../../Components/Blog/Listing/Listing.style'
 import { ITag } from '../../interfaces/Itag'
 import Link from 'next/link'
 import { ICategoria } from '../../interfaces/ICategoria'
@@ -49,7 +48,6 @@ const Post : React.FC<IPostPage> = ({ Post, Categorias }) => {
         <Title>
           {Post.title}
         </Title>
-        <Responsable>Publicado por {Post.author}</Responsable>
         </HeaderContainer>
         <Content dangerouslySetInnerHTML={{ __html: marked(Post.text) }} />
 
@@ -104,8 +102,7 @@ export const getStaticProps: GetStaticProps = async ({ params }: any) => {
     destaque: !!post.destaque,
     text: post.text,
     title: post.title,
-    url: post.image[0].url || undefined,
-    author: `${post.admin_user.firstname} ${post.admin_user.lastname}`,
+    url: post.image.length > 0 ? post.image[0].url : null,
     tags: post.tags,
     published_at: `${PublishedDate.getUTCDate()} de ${getMonth(PublishedDate.getMonth())} de ${PublishedDate.getFullYear()}`
   }
