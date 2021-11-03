@@ -30,7 +30,6 @@ const Post : React.FC<IPostPage> = ({ Post, Categorias }) => {
             ? <TagList>
               <span style={{ marginRight: '10px' }}>Tags:</span>
               {Post.tags && Post.tags.map((tag: ITag) => {
-                console.log(tag)
                 return (
                   <Link href={`/blog/tag/${tag.id}?tag=${tag.name}`} key={tag.id}>
                     <a>

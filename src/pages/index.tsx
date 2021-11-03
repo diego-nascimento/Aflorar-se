@@ -31,11 +31,10 @@ const Banners: Array<TypeBanner> = [
   }
 ]
 const Home: React.FC<IHome> = ({ Posts, Destaques, Categorias }) => {
-  console.log(Posts, Destaques, Categorias)
   return (
     <LayoutBase>
       <Banner banners={Banners} />
-      <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot Categorias={Categorias} CategoriaSelected={null} />
+      <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={false} Categorias={Categorias} CategoriaSelected={null} />
     </LayoutBase>
   )
 }
@@ -64,8 +63,6 @@ export const getStaticProps: GetStaticProps = async (context) => {
     url: `${process.env.APIURL}/categoria-blogs`,
     body: null
   })
-
-  console.log(responsePosts.body[0].admin_user)
 
   const Posts = responsePosts.body.map((post:any):IPost => ({
     id: post.id,

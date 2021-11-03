@@ -18,7 +18,7 @@ const Blog: React.FC<IBlog> = ({ Posts, Destaques, Categorias }) => {
     <Layout>
       <Wrapper>
         <h1>Blog</h1>
-        <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={false} Categorias={Categorias} />
+        <BlogBase Posts={Posts} DestaquesData={Destaques} FullOrNot={true} Categorias={Categorias} />
       </Wrapper>
     </Layout>
   )

@@ -6,7 +6,7 @@ import { IPost } from '../../../interfaces/IPost'
 import { ICategoria } from '../../../interfaces/ICategoria'
 import CategoryList from '../../CategoryList/CategoryList'
 import MobileListCategoria from './MobileListCategoria'
-
+import { useRouter } from 'next/router'
 interface IListing{
   Posts: Array<IPost>
   FullOrNot: boolean
@@ -15,6 +15,7 @@ interface IListing{
 }
 
 const Listing : React.FC<IListing> = ({ Posts, FullOrNot, Categorias, CategoriaSelected }) => {
+  const Router = useRouter()
   const RenderPost = (PostData:IPost) => {
     return (
       <Link href={`/post/${PostData.id}?val=${PostData.title}`} key={PostData.id}>
@@ -53,7 +54,7 @@ const Listing : React.FC<IListing> = ({ Posts, FullOrNot, Categorias, CategoriaS
         })}
       </PostList>
       {
-        FullOrNot
+        !FullOrNot && Router.asPath === '/'
           ? <Link href='/blog'>
             <a style={{ display: 'flex', justifyContent: 'center', color: '#111', fontSize: '1.2rem' }}> Ver Mais...</a>
           </Link>
